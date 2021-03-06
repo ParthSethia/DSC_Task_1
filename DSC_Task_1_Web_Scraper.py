@@ -57,7 +57,7 @@ for temp2 in temp.li.ul.find_all('li'):
 			URL="https://books.toscrape.com/"
 			URL=URL+cat_url.split('/')[0]+'/'+cat_url.split('/')[1]+'/'+cat_url.split('/')[2]+'/'+cat_url.split('/')[3]+'/'+soup.find('li',class_='next').find('a')['href'] #updating URL for page 2
 			soup=BeautifulSoup(requests.get(URL).text,'lxml')
-			for book in soup.find_all('li',class_='col-xs-6 col-sm-4 col-md-3 col-lg-3'): #loop for page 2 books.
+			for book in soup.find_all('li',class_='col-xs-6 col-sm-4 col-md-3 col-lg-3'): #loop for page 2 books. Had to use second loop as updating the list in orignal list didn't work
 				book_title = book.h3.find('a')['title']
 				book_rating = (book.find('p')['class'])[1]
 				book_price = book.find('p',class_='price_color').text
